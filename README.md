@@ -1,5 +1,5 @@
 #Closet_inteligente
-Processos de Proyecto final G28 Full Stack
+Processos del Proyecto final G28 Full Stack
 
 
 Esta idea esta hecha para aquellos que gastan mucha plata con ropas sin uso tenendo en evidencia la sustentabilidad ademas de economizar.
@@ -10,7 +10,7 @@ Contudo, te dah el espacio para ganar, ou mejor, recuper aquella plata que se qu
 
 
  
- Diagrama Conceptul
+ Diagrama Conceptual
    
 El diagrama conceptual mostra las principais entidades que trabajas la aplicacion.
 

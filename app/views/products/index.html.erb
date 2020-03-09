@@ -1,0 +1,18 @@
+<h1>Sus Products</h1>
+<p>Find me in app/views/products/index.html.erb</p>
+
+<% @products.each do |product| %>
+<%#if product.image.attached? %>
+    <%#=image_tag product.image %>
+<%#end %>
+
+
+<%= product.user.email %><br>
+<%= product.name %><br>
+<%= product.description %><br>
+<% if product.image.attached? %>
+    <%= image_tag product.image.variant(resize:"100x100")%>
+<% end %> 
+<% end %><br>
+
+<%= link_to 'Crear Producto', new_product_path, class:"btn btn-outline-warning" %>
