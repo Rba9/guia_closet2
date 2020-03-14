@@ -2,12 +2,20 @@
 
 <p>
   <strong>User:</strong>
-  <%= @album.user %>
+  <%= @album.user.email %>
 </p>
 
 <p>
-  <strong>Photo:</strong>
-  <%= image_tag @album.photo%>
+  <strong>Photos:</strong>
+  <div class="card" style="width: 18rem;">
+
+ 
+ <% if @album.photos.attached? %>
+ <% @album.photos.each do |photo|%>
+
+  <%= image_tag photo %>
+  <% end %>
+  <%end%>
 </p>
 
 <p>
@@ -18,10 +26,13 @@
 
 
 <h5>Crie sus albums </h5>
+
 <div class="card" style="width: 18rem;">
- <% if @album.photo.attached? %>
-    <%= image_tag @album.photo, class:"img-fluid " %>
+ <% if @album.photos.attached? %>
+ <% @album.photos.each do |photo|%>
+    <%= image_tag photo, class:"img-fluid " %>
 <% end %>  
+<% end %>
   <div class="card-body">
   <h5 class="card-title"><%= @album.title %></h5>
     <p class="card-text"> <%= @album.description %> </p>
