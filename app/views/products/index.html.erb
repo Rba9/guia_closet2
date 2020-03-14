@@ -1,18 +1,30 @@
-<h1>Sus Products</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<br>
+<h1>Mis Products</h1>
 
-<% @products.each do |product| %>
-<%#if product.image.attached? %>
-    <%#=image_tag product.image %>
-<%#end %>
-
-
-<%= product.user.email %><br>
-<%= product.name %><br>
-<%= product.description %><br>
-<% if product.image.attached? %>
-    <%= image_tag product.image.variant(resize:"100x100")%>
-<% end %> 
-<% end %><br>
-
+<br>
 <%= link_to 'Crear Producto', new_product_path, class:"btn btn-outline-warning" %>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <% @products.each do |product| %>
+        <div class="card ml-2 mr-2" style="width: 18rem;">
+            <% if product.image.attached? %>
+                <%= image_tag product.image, class:"img-fluid " %>
+            <% end %>  
+            <div class="col-sm">
+                <div class="card-body">
+                    <h5 class="card-title"><%= product.name %></h5>
+                    <p class="card-text"> Descripcion: <%= product.description %> </p>
+                    <p class="card-text"> Contacto: <%= product.user.email %> </p>
+                </div>
+            </div>
+        </div>
+        <% end %> 
+    </div>
+
+
+
+
+
+  

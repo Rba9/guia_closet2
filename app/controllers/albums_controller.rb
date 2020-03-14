@@ -11,11 +11,13 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    @albums = Album.find(params[:id])
   end
 
   # GET /albums/new
-  def new
+  def new 
     @album = Album.new
+    
   end
 
   # GET /albums/1/edit
@@ -26,13 +28,13 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(album_params)
-
+    @album.user = current_user
     respond_to do |format|
       if @album.save
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Album fallo su creacion.' }
         format.json { render json: @album.errors, status: :unprocessable_entity }
       end
     end
@@ -70,6 +72,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:user_id, :photo, :estilos)
+     params.require(:album).permit(:user_id, :title, :description)
     end
 end

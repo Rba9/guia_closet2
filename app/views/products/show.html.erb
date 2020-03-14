@@ -1,13 +1,17 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
 
-<%= @product.name %>
-<%= @product.description %>
- <div class='text-center'>
-<% if @product.image.attached? %>
+<br> 
+
+<h5>Edite ou elimine su producto    </h5>
+<div class="card" style="width: 18rem;">
+ <% if @product.image.attached? %>
     <%= image_tag @product.image, class:"img-fluid " %>
-<% end %>   
- </div>
+<% end %>  
+  <div class="card-body">
+  <h5 class="card-title"><%= @product.name %></h5>
+    <p class="card-text"> <%= @product.description %> </p>
+  </div>
+</div>
 
+<br>
  <%=link_to 'Editar Products', edit_product_path(@product),class:"btn btn-outline-success"%>
  <%=link_to 'Eliminar Products', { :action => :destroy, :id => @product.id },  method: :delete, class:"btn btn-outline-danger"%>

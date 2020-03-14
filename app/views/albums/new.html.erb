@@ -1,5 +1,27 @@
 <h1>New Album</h1>
+    <p>Guarde sus productos dentro de sus albums </p>
 
-<%= render 'form', album: @album %>
+<%= form_with(model: @album, local: true) do |f| %>
 
-<%= link_to 'Back', albums_path %>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div><br>
+
+    <div>
+        <%= f.label :description %><br>
+        <%= f.text_area :description, size: "60x12" %>
+    </div>
+
+    <div>
+  <%= f.file_field :photos, multiple:true %>
+   </div>
+
+    <div>
+        <%= f.submit "Guardar" %>
+
+     </div>
+
+<% end %>
+
+    <%= link_to 'Back', albums_path %>

@@ -7,13 +7,28 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @album.photo %>
+  <%= image_tag @album.photo%>
 </p>
 
 <p>
-  <strong>Estilos:</strong>
-  <%= @album.estilos %>
+  <strong>Description:</strong>
+  <%= @album.description %>
 </p>
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
+
+
+<h5>Crie sus albums </h5>
+<div class="card" style="width: 18rem;">
+ <% if @album.photo.attached? %>
+    <%= image_tag @album.photo, class:"img-fluid " %>
+<% end %>  
+  <div class="card-body">
+  <h5 class="card-title"><%= @album.title %></h5>
+    <p class="card-text"> <%= @album.description %> </p>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Edit', edit_album_path(@album) %> 
 <%= link_to 'Back', albums_path %>
