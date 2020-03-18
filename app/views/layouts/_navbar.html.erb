@@ -12,15 +12,26 @@
       <li class="nav-item">
         <%= link_to 'Productos', products_path, class: 'nav-link' %>
       </li>
-      
+       <li class="nav-item">
+        <a class="nav-link" href="<%= orders_index_path %>">Mi carro <span class="sr-only">(current)</span></a>
+      </li>
         <% unless user_signed_in? %>
             <li class="nav-item">  <%= link_to 'Registrarse', new_user_registration_path, class: 'nav-link' %>  </li> 
              <li class="nav-item"> <%= link_to "Iniciar Sesion", new_user_session_path, class: 'nav-link' %></li>
           <% else %>
             <li class="nav-item">  <%= link_to "Cerrar Session", destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
-         <% end %>
-     
-          
+         <% end %>    
     </ul>
   </div>
 </nav>
+
+<% if alert.present? %>
+      <div class="alert alert-warning" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>

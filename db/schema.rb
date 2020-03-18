@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_14_203356) do
+ActiveRecord::Schema.define(version: 2020_03_18_155816) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 2020_03_14_203356) do
     t.index ["product_id", "album_id"], name: "index_albums_products_on_product_id_and_album_id"
   end
 
+  create_table "billings", force: :cascade do |t|
+    t.string "code"
+    t.string "payment_method"
+    t.decimal "amount", precision: 5, scale: 2
+    t.string "currency"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_billings_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -67,6 +78,20 @@ ActiveRecord::Schema.define(version: 2020_03_14_203356) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.boolean "paid", default: false
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "billing_id"
+    t.integer "price"
+    t.integer "quantity", default: 0
+    t.index ["billing_id"], name: "index_orders_on_billing_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -80,6 +105,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_203356) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price", default: 0
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

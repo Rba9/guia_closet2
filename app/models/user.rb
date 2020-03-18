@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :albums
   has_many :products
   has_many :comments
-  
+  has_many :orders
 end

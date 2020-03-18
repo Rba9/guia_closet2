@@ -17,6 +17,7 @@
                     <h5 class="card-title"><%= product.name %></h5>
                     <p class="card-text"> Descripcion: <%= product.description %> </p>
                     <p class="card-text"> Contacto: <%= product.user.email %> </p>
+                    <%= link_to "Agregar al carro", product_orders_path(product), class: 'btn btn-success', method: :post  %>
                 </div>
             </div>
         </div>
